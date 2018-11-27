@@ -1,0 +1,147 @@
+A51 MACRO ASSEMBLER  SBR                                                                  01/09/2018 12:43:16 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.5.0
+OBJECT MODULE PLACED IN SBR.OBJ
+ASSEMBLER INVOKED BY: F:\keil C5\C51\BIN\A51.EXE SBR.a51 SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;ORG 0000H
+
+                       2             ;LJMP MAIN
+
+                       3     
+
+                       4     ;ORG 0050H
+
+                       5     ;MAIN:
+
+                       6             ;MOV R1, #20H
+
+                       7             ;MOV R1, #23H
+
+                       8             ;LCALL SBR
+
+                       9     
+
+                      10             ;SJMP $
+
+                      11     ;;----- END MAIN-----
+
+                      12     
+
+                      13     ;SBR:
+
+                      14             ;PUSH ACC
+
+                      15             ;PUSH B
+
+                      16             ;PUSH PSW
+
+                      17             ;; tính so byte t R1 den R2 = R2 - R1 +1
+
+                      18             ;MOV A, R2
+
+                      19             ;CLR C
+
+                      20             ;SUBB A, R1
+
+                      21             ;ADD A, #01
+
+                      22             ;MOV B, A               ; chuyen so byte vao B dung cho vong lap
+
+                      23     ;BACK:
+
+                      24             ;MOV A, @R1
+
+                      25             ;CPL ACC.7
+
+                      26             ;MOV @R1, A
+
+                      27             ;INC R1
+
+                      28             ;DJNZ B, BACK
+
+                      29             
+
+                      30     ;POP PSW
+
+                      31     ;POP B
+
+                      32     ;POP ACC
+
+                      33     
+
+                      34     ;RET
+
+                      35     
+
+                      36     ;END
+
+                      37     
+
+                      38     
+
+                      39     
+
+                      40     
+
+0000                  41     ORG 00H
+
+0000 758920           42             MOV     TMOD,#20H
+
+0003 758BFD           43             MOV TL1,#0FDH
+
+0006 758DFD           44             MOV     TH1,#0FDH
+
+0009 D28E             45             SETB TR1
+
+000B 80FE             46             SJMP $
+
+                      47     END
+
+                             
+
+                             
+
+                             
+
+                             
+
+                             
+
+                             
+
+                             
+
+                             
+
+                             
+
+                             
+
+                             
+
+A51 MACRO ASSEMBLER  SBR                                                                  01/09/2018 12:43:16 PAGE     2
+
+                             
+
+A51 MACRO ASSEMBLER  SBR                                                                  01/09/2018 12:43:16 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+TH1. . . . . . . .  D ADDR   008DH   A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

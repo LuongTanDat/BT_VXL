@@ -1,0 +1,91 @@
+A51 MACRO ASSEMBLER  DE_1                                                                 01/08/2018 17:48:04 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.5.0
+OBJECT MODULE PLACED IN .\Objects\de_1.obj
+ASSEMBLER INVOKED BY: F:\keil C5\C51\BIN\A51.EXE de_1.a51 SET(SMALL) DEBUG PRINT(.\Listings\de_1.lst) OBJECT(.\Objects\d
+                      e_1.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+
+0000 020030            2             LJMP MAIN
+
+                       3     
+
+0030                   4     ORG 0030H
+
+0030                   5     MAIN:
+
+0030 E550              6             MOV A, 50H
+
+0032 1134              7             ACALL CT_CON
+
+                       8             
+
+                       9     ;-------------------
+
+0034                  10     CT_CON:
+
+0034 7580FF           11             MOV P0, #0FFH                   ; che do Input
+
+  0030                12             COUNT EQU 30H                   ; chua so xung dem dc
+
+                      13             
+
+0037 753000           14             MOV COUNT, #00H
+
+                      15             
+
+003A 2085FD           16             JB P0.5, $                              ; doi den khi P0.5 xuong muc 0
+
+003D 3085FD           17             JNB P0.5, $                             ; doi den khi P0.5 tu muc 0 len 1
+
+                      18                     
+
+                      19             ; bat dau dem xung, <=> dem so lan P0.6: 1-> 0 -> 1
+
+0040                  20             LOOP:
+
+0040 2086FD           21                     JB P0.6, $                      ; doi den khi P0.6 xuong muc 0
+
+0043 3086FD           22                     JNB P0.6, $                     ; doi den khi P0.5 tu muc 0 len 1 
+
+0046 0530             23                     INC COUNT
+
+0048 E530             24             MOV A, COUNT
+
+004A B464F3           25             CJNE A , #100, LOOP
+
+                      26             
+
+                      27             ; da dem xong 100 xung
+
+004D D287             28             SETB P0.7
+
+004F 22               29     RET
+
+                      30     
+
+                      31     END
+
+A51 MACRO ASSEMBLER  DE_1                                                                 01/08/2018 17:48:04 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+COUNT. . . . . . .  N NUMB   0030H   A   
+CT_CON . . . . . .  C ADDR   0034H   A   
+LOOP . . . . . . .  C ADDR   0040H   A   
+MAIN . . . . . . .  C ADDR   0030H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
